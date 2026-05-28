@@ -150,12 +150,12 @@
     .countdown-boxes {
       display: flex;
       align-items: center;
-      gap: clamp(6px, 2vw, 16px);
+      justify-content: center;
+      gap: 6px;
       animation: fadeUp 1s ease forwards 0.9s;
       opacity: 0;
       width: 100%;
-      max-width: 420px;
-      justify-content: center;
+      max-width: 480px;
       padding: 0 1rem;
     }
 
@@ -163,16 +163,16 @@
       background: #fff;
       border: 0.5px solid rgba(201,169,110,0.3);
       border-radius: 8px;
-      padding: clamp(12px, 3vw, 24px) clamp(10px, 2.5vw, 28px);
-      flex: 1;
+      padding: 14px 0;
+      width: 70px;
+      flex-shrink: 0;
       text-align: center;
       box-shadow: 0 4px 20px rgba(201,169,110,0.1);
-      min-width: 0;
     }
 
     .cb-num {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(32px, 9vw, 64px);
+      font-size: 38px;
       font-weight: 300;
       color: var(--dark);
       line-height: 1;
@@ -180,7 +180,7 @@
     }
 
     .cb-label {
-      font-size: clamp(7px, 1.8vw, 10px);
+      font-size: 9px;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--muted);
@@ -191,11 +191,20 @@
 
     .cb-sep {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(28px, 6vw, 48px);
+      font-size: 28px;
       color: var(--gold2);
       flex-shrink: 0;
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+    }
+
+    /* Desktop — quadrados maiores */
+    @media (min-width: 481px) {
+      .cb { width: 100px; padding: 20px 0; }
+      .cb-num { font-size: 54px; }
+      .cb-label { font-size: 10px; }
+      .cb-sep { font-size: 38px; }
+      .countdown-boxes { gap: 10px; }
     }
 
     .cd-hint {
@@ -508,29 +517,6 @@
     @media (max-width: 480px) {
       .section { padding: 3rem 1rem; }
 
-      /* Contador em 2x2 no mobile pequeno */
-      .countdown-boxes {
-        display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        grid-template-rows: 1fr auto 1fr;
-        gap: 8px;
-        max-width: 300px;
-      }
-      .cb:nth-child(1) { grid-column: 1; grid-row: 1; }
-      .cb-sep:nth-child(2) { grid-column: 2; grid-row: 1; align-self: center; margin-bottom: 14px; }
-      .cb:nth-child(3) { grid-column: 3; grid-row: 1; }
-      .cb-sep:nth-child(4) { display: none; }
-      .cb:nth-child(5) { grid-column: 1; grid-row: 3; }
-      .cb:nth-child(7) { grid-column: 3; grid-row: 3; }
-
-      /* Linha separadora entre linhas do grid */
-      .countdown-boxes::after {
-        content: '';
-        grid-column: 1 / -1;
-        grid-row: 2;
-        height: 0.5px;
-        background: var(--gold2);
-      }
 
       .nums { grid-template-columns: 1fr; }
       .num-item { border-right: none; border-bottom: 0.5px solid var(--gold2); }
